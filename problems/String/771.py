@@ -3,9 +3,8 @@ class Solution:
         total = 0
 
         for jewel in jewels:
-            for stone in stones:
-                if stone == jewel:
-                    total += 1
+            if jewel in stones:
+                total += 1
 
         return total
 
