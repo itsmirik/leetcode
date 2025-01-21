@@ -8,13 +8,13 @@ class Solution:
         if n < 3:
             return count
 
-        nums_map = {}
-        for key, num in enumerate(nums):
-            nums_map[num] = key
+        seen = []
 
         for num in nums:
-            if num + diff in nums_map and num - diff in nums_map:
+            if num - diff in seen and num - 2 * diff in seen:
                 count += 1
+
+            seen.append(num)
 
         return count
 
