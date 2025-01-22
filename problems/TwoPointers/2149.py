@@ -3,20 +3,16 @@ from typing import List
 
 class Solution:
     def rearrangeArray(self, nums: List[int]) -> List[int]:
-        pos_arr = []
-        neg_arr = []
-
         result = []
+        pos, neg = 0, 1
 
         for num in nums:
             if num >= 0:
-                pos_arr.append(num)
+                result.insert(pos, num)
+                pos += 2
             else:
-                neg_arr.append(num)
-
-        for i in range(len(nums) // 2):
-            result.insert(2 * i, pos_arr[i])
-            result.insert(2 * i + 1, neg_arr[i])
+                result.insert(neg, num)
+                neg += 2
 
         return result
 
