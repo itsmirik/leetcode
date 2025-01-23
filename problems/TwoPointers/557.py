@@ -1,18 +1,21 @@
 class Solution:
     def reverseWords(self, s: str) -> str:
-        split_s = s.split(' ')
-        result = ''
-        n = len(split_s)
+        left, right = 0, 0
+        temp = ''
 
-        for i in range(n - 1):
-            extra_space = ''
-            if i != n - 1:
-                extra_space = ' '
+        while right < len(s):
+            if s[right] != ' ':
+                right += 1
+            elif s[right] == ' ':
+                temp += s[left:right + 1][::-1]
+                right += 1
+                left = right
 
-            result = result + split_s[i][::-1] + extra_space
-
-        return result
+        temp += ' '
+        temp += s[left:right + 2][::-1]
+        return temp[1:]
 
 
 if __name__ == '__main__':
-    print(Solution().reverseWords("Let's take LeetCode contest"))
+    # print(Solution().reverseWords("Let's take LeetCode contest"))
+    print(Solution().reverseWords("Mr Ding"))
