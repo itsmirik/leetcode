@@ -1,14 +1,17 @@
 class Solution:
     def reverseWords(self, s: str) -> str:
         split_s = s.split(' ')
+        result = ''
+        n = len(split_s)
 
-        for i in range(len(split_s)):
-            if i == len(split_s) - 1:
-                split_s[i] = split_s[i][::-1]
-            else:
-                split_s[i] = split_s[i][::-1] + ' '
+        for i in range(n - 1):
+            extra_space = ''
+            if i != n - 1:
+                extra_space = ' '
 
-        return ''.join(split_s)
+            result = result + split_s[i][::-1] + extra_space
+
+        return result
 
 
 if __name__ == '__main__':
