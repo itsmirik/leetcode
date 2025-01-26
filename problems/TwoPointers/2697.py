@@ -1,28 +1,21 @@
 class Solution:
-    def makeSmallestPalindrome(s):
-        arr = list(s)
-        left = 0
-        right = len(arr) - 1
-        ops = 0
+    def makeSmallestPalindrome(self, s: str) -> str:
+        left, right = 0, len(s) - 1
+        result = list(s)
+
+        # print(ord('a'), ord('b')) 97, 98
         while left < right:
-            if arr[left] != arr[right]:
-                if arr[left] > arr[right]:
-                    arr[left] = arr[right]
+            if s[left] != s[right]:
+                if ord(s[left]) < ord(s[right]):
+                    result[right] = s[left]
                 else:
-                    arr[right] = arr[left]
-                ops += 1
+                    result[left] = s[right]
             left += 1
             right -= 1
 
-        if ops == 0:
-            return s
-
-        result = ""
-        for i in arr:
-            result += i
-
-        return result
+        return ''.join(result)
 
 
 if __name__ == '__main__':
-    print(Solution().makeSmallestPalindrome("egcfe"))
+    # print(Solution().makeSmallestPalindrome("egcfe"))
+    print(Solution().makeSmallestPalindrome("abcd"))
